@@ -13,9 +13,11 @@ class ApiController extends AbstractController
     #[Route('/api/upload', name: 'app_api', methods: 'POST')]
     public function index(Request $request, ZipFilesService $zipFilesService): Response
     {
-        if (empty($_FILES)) return new Response('No files selected');
+        if (empty($_FILES) || $_FILES['file']['name'][0] == '') return new Response('No files selected');
         $clientIp = $request->getClientIp();
+        $responseService = $zipFilesService->zipFiles($_FILES);
+        $isSuccess = $responseService['success'];
 
-        return $zipFilesService->zipFiles($_FILES);
+        return $responseService['response'];
     }
 }
