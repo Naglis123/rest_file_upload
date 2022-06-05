@@ -3,7 +3,6 @@
 2. `Composer install` </br>
 3. Make a migration `bin/console doctrine:migrations:migrate` <br>
 4. Start local server: `symfony server:start -d` </br>
-</br>
 
 ### How it works
 Using Postman App, make a POST request to `127.0.0.1:8000/api/upload`, with request body as form-data, add key `file[]`, and select file type: file. </br>
